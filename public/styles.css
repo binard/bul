@@ -5,6 +5,7 @@ body{
   min-height: 100vh;
 }
 footer{
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }
@@ -16,4 +17,7 @@ footer a{
 }
 footer a:hover{
   color: #999;
+}
+footer a:first-child{
+  margin-right: 10px;
 }
