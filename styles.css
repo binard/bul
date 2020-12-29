@@ -1,0 +1,30 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Helvetica, Arial, sans-serif;
+}
+div.main-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+footer{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+footer .icon{
+  font-size: 2em;
+}
+footer a{
+  color: #000;
+  margin-left: 10px;
+}
+footer a:hover{
+  color: #999;
+}
+footer a:first-child{
+  margin-left: 0;
+}
