@@ -26,9 +26,10 @@
         [attr.aria-label]="(i + 1) + ' sur ' + items.length"
       >
         <button
+          #openBtn
           type="button"
           class="carousel__btn"
-          (click)="open(item)"
+          (click)="open(item, openBtn)"
           [attr.aria-label]="'Agrandir : ' + item.alt"
         >
           <img
@@ -55,16 +56,14 @@
   </button>
 </div>
 
-@if (active(); as item) {
-  <div
-    class="lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Photo agrandie"
-    (click)="close()"
-    (keydown)="onKeydown($event)"
-    tabindex="-1"
-  >
+<dialog
+  #dialog
+  class="lightbox"
+  aria-label="Photo agrandie"
+  (click)="onBackdropClick($event)"
+  (close)="close()"
+>
+  @if (active(); as item) {
     <button
       type="button"
       class="lightbox__close"
@@ -77,5 +76,5 @@
       [width]="item.width"
       [height]="item.height"
     />
-  </div>
-}
+  }
+</dialog>

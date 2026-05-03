@@ -1,4 +1,4 @@
-import { Component, ElementRef, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, effect, signal, viewChild } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { GALLERY_ITEMS, GalleryItem } from './gallery.config';
 
@@ -13,13 +13,37 @@ export class Gallery {
   readonly active = signal<GalleryItem | null>(null);
 
   private readonly trackEl = viewChild<ElementRef<HTMLElement>>('track');
+  private readonly dialogEl = viewChild<ElementRef<HTMLDialogElement>>('dialog');
+  private lastOpener: HTMLElement | null = null;
 
-  open(item: GalleryItem): void {
+  constructor() {
+    effect(() => {
+      const item = this.active();
+      const dialog = this.dialogEl()?.nativeElement;
+      if (!dialog) return;
+      if (item && !dialog.open) {
+        dialog.showModal();
+      } else if (!item && dialog.open) {
+        dialog.close();
+      }
+    });
+  }
+
+  open(item: GalleryItem, opener: HTMLElement): void {
+    this.lastOpener = opener;
     this.active.set(item);
   }
 
   close(): void {
     this.active.set(null);
+    this.lastOpener?.focus();
+    this.lastOpener = null;
+  }
+
+  onBackdropClick(event: MouseEvent): void {
+    if (event.target === this.dialogEl()?.nativeElement) {
+      this.close();
+    }
   }
 
   scrollPrev(): void {
@@ -30,15 +54,10 @@ export class Gallery {
     this.scrollByDirection(1);
   }
 
-  onKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Escape') {
-      this.close();
-    }
-  }
-
   private scrollByDirection(direction: -1 | 1): void {
     const el = this.trackEl()?.nativeElement;
     if (!el) return;
-    el.scrollBy({ left: el.clientWidth * 0.8 * direction, behavior: 'smooth' });
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    el.scrollBy({ left: el.clientWidth * 0.8 * direction, behavior: reduced ? 'auto' : 'smooth' });
   }
 }
