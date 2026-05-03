@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './core/layout/header';
 import { Footer } from './core/layout/footer';
@@ -12,6 +12,7 @@ import { SeoService } from './core/seo.service';
 })
 export class App implements OnInit {
   private readonly seo = inject(SeoService);
+  protected readonly hideShell = this.seo.hideShell;
 
   ngOnInit(): void {
     this.seo.initRouteListener();

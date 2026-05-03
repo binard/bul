@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
@@ -11,6 +11,8 @@ interface RouteSeoData {
   title?: string;
   description?: string;
   ogImage?: string;
+  noindex?: boolean;
+  hideShell?: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -21,6 +23,8 @@ export class SeoService {
   private readonly route = inject(ActivatedRoute);
   private readonly document = inject(DOCUMENT);
 
+  readonly hideShell = signal(false);
+
   initRouteListener(): void {
     this.router.events
       .pipe(
@@ -29,6 +33,7 @@ export class SeoService {
       )
       .subscribe((data) => {
         this.applySeo(data, this.router.url);
+        this.hideShell.set(data.hideShell === true);
       });
   }
 
@@ -58,6 +63,15 @@ export class SeoService {
     this.upsertMeta('name', 'twitter:image', ogImage);
 
     this.upsertCanonical(fullUrl);
+    this.applyRobots(data.noindex === true);
+  }
+
+  private applyRobots(noindex: boolean): void {
+    if (noindex) {
+      this.upsertMeta('name', 'robots', 'noindex, nofollow');
+    } else {
+      this.meta.removeTag('name="robots"');
+    }
   }
 
   private upsertMeta(attr: 'name' | 'property', key: string, content: string): void {

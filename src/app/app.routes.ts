@@ -34,6 +34,16 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'carte',
+    loadComponent: () => import('./pages/card/card').then((m) => m.Card),
+    data: {
+      title: 'La BUL',
+      description: 'La BUL avant la vie.',
+      hideShell: true,
+      noindex: true,
+    },
+  },
+  {
     path: '**',
     redirectTo: '',
   },

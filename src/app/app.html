@@ -1,6 +1,10 @@
-<a class="skip-link" href="#main">Aller au contenu</a>
-<app-header />
+@if (!hideShell()) {
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <app-header />
+}
 <main id="main" tabindex="-1">
   <router-outlet />
 </main>
-<app-footer />
+@if (!hideShell()) {
+  <app-footer />
+}
