@@ -34,7 +34,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'carte',
+    path: 'id',
     loadComponent: () => import('./pages/card/card').then((m) => m.Card),
     data: {
       title: 'La BUL',
