@@ -2,7 +2,7 @@
 
 Site officiel de l'**Association Republicaine BUL** : [https://la-bul.com](https://la-bul.com)
 
-Cinq amis, des trains, des villes. Depuis 2017.
+Cinq amis, des villes. Depuis 2017.
 
 ## Stack
 
