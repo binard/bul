@@ -73,7 +73,7 @@
   background: var(--bul-white);
   border-bottom: 2px solid var(--bul-black);
   flex-direction: column;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) 1.25rem;
 
   &.is-open {
     display: flex;

@@ -3,7 +3,7 @@
   margin: 0 calc(-1 * var(--space-md));
 
   @media (max-width: 600px) {
-    margin: 0 calc(-1 * var(--space-sm));
+    margin: 0 -1.25rem;
   }
 }
 
@@ -38,7 +38,7 @@
   }
 
   @media (max-width: 600px) {
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-xs) 1.25rem;
     gap: 0.6rem;
   }
 }
