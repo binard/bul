@@ -5,8 +5,8 @@
 .card {
   min-height: 100dvh;
   background:
-    radial-gradient(circle at 20% 15%, rgba(255, 193, 7, 0.25), transparent 55%),
-    radial-gradient(circle at 80% 85%, rgba(255, 193, 7, 0.18), transparent 55%),
+    radial-gradient(circle at 15% 10%, rgba(250, 232, 26, 0.28), transparent 50%),
+    radial-gradient(circle at 85% 90%, rgba(250, 232, 26, 0.18), transparent 50%),
     var(--bul-cream);
   display: flex;
   align-items: center;
@@ -16,24 +16,24 @@
 
 .card__inner {
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: 1.4rem;
   text-align: center;
 }
 
 .card__logo {
   width: auto;
-  height: clamp(150px, 32vw, 200px);
+  height: clamp(140px, 30vw, 180px);
 }
 
 .card__motto {
   margin: 0;
-  font-size: clamp(1.3rem, 5vw, 1.7rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.15rem, 4.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
   color: var(--bul-black);
   max-width: none;
 }
@@ -42,58 +42,139 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
 }
 
 .card__link {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
+  gap: 0.85rem;
   width: 100%;
-  min-height: 60px;
-  padding: 0.9rem 1.2rem;
-  border: 2px solid var(--bul-black);
-  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 14px;
   background: var(--bul-white);
   color: var(--bul-black);
-  font-size: 1.05rem;
-  font-weight: 600;
   text-decoration: none;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+  transition:
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s ease;
 
   &:hover,
   &:focus-visible {
     transform: translateY(-2px);
-    box-shadow: 0 4px 0 var(--bul-black);
+    box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08);
+    border-color: rgba(17, 17, 17, 0.14);
     text-decoration: none;
-    background: var(--bul-cream);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.06);
   }
 
   &:focus-visible {
-    outline: 3px solid var(--bul-yellow);
+    outline: 2px solid var(--bul-yellow);
     outline-offset: 3px;
-  }
-
-  svg {
-    flex-shrink: 0;
   }
 }
 
+.card__link__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bul-yellow);
+  color: var(--bul-black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__link__label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+}
+
+.card__link__title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--bul-black);
+  line-height: 1.3;
+}
+
+.card__link__sub {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--bul-gray-600);
+  line-height: 1.3;
+}
+
+.card__link__arrow {
+  flex-shrink: 0;
+  color: var(--bul-gray-300);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+}
+
+.card__link:hover .card__link__arrow,
+.card__link:focus-visible .card__link__arrow {
+  color: var(--bul-yellow-dark);
+  transform: translateX(3px);
+}
+
+// Primary variant : full yellow, inverted icon (black bg, yellow icon)
 .card__link--primary {
   background: var(--bul-yellow);
+  border-color: rgba(17, 17, 17, 0.12);
+
+  .card__link__icon {
+    background: var(--bul-black);
+    color: var(--bul-yellow);
+  }
+
+  .card__link__title {
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .card__link__arrow {
+    color: var(--bul-black);
+  }
 
   &:hover,
   &:focus-visible {
-    background: var(--bul-yellow-dark);
+    box-shadow: 0 10px 24px rgba(250, 232, 26, 0.45);
+    border-color: var(--bul-black);
+  }
+
+  &:hover .card__link__arrow,
+  &:focus-visible .card__link__arrow {
+    color: var(--bul-black);
+    transform: translateX(4px);
   }
 }
 
+.card__link--primary .card__link__sub {
+  color: rgba(17, 17, 17, 0.65);
+}
+
 .card__hashtag {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--bul-yellow-dark);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--bul-gray-600);
+  font-weight: 500;
+  letter-spacing: 0.02em;
   max-width: none;
+  opacity: 0.7;
 }
