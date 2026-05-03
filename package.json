@@ -1,44 +1,42 @@
 {
   "name": "bul",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Site vitrine de l'Association Republicaine BUL — la-bul.com",
+  "homepage": "https://la-bul.com",
   "private": true,
+  "packageManager": "npm@11.11.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "gh-pages-deploy": "node scripts/gh-pages-deploy.js"
+    "ng": "ng",
+    "gallery": "node scripts/generate-gallery.mjs",
+    "prestart": "npm run gallery",
+    "prebuild": "npm run gallery",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
-    "core-js": "^3.6.4",
-    "vue": "^2.6.11"
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/platform-server": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "@angular/ssr": "^21.2.9",
+    "@fontsource-variable/inter": "^5.2.8",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.2.0",
-    "@vue/cli-plugin-eslint": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.1.2",
-    "vue-template-compiler": "^2.6.11",
-    "execa": "latest"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+    "@angular/build": "^21.2.9",
+    "@angular/cli": "^21.2.9",
+    "@angular/compiler-cli": "^21.2.0",
+    "@types/node": "^20.17.19",
+    "image-size": "^2.0.2",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
+  }
 }

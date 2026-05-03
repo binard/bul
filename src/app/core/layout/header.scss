@@ -1,0 +1,144 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bul-white);
+  border-bottom: 2px solid var(--bul-black);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  gap: var(--space-sm);
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--bul-black);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
+  }
+
+  img {
+    width: auto;
+    height: 52px;
+  }
+}
+
+.header__brand-text {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .header__brand-text {
+    display: inline;
+  }
+}
+
+.header__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid var(--bul-black);
+  border-radius: 4px;
+  width: 44px;
+  height: 44px;
+  color: var(--bul-black);
+  padding: 0;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--bul-yellow);
+  }
+}
+
+.header__nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bul-white);
+  border-bottom: 2px solid var(--bul-black);
+  flex-direction: column;
+  padding: var(--space-sm) var(--space-md);
+
+  &.is-open {
+    display: flex;
+  }
+
+  a {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--bul-gray-300);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.is-active {
+      color: var(--bul-yellow-dark);
+      text-decoration: underline;
+      text-decoration-color: var(--bul-yellow);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .header__toggle {
+    display: none;
+  }
+
+  .header__nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    border-bottom: none;
+    padding: 0;
+    gap: var(--space-md);
+
+    a {
+      padding: 0.5rem 0;
+      border-bottom: none;
+      text-decoration: none;
+      position: relative;
+      font-size: 1.05rem;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -4px;
+        height: 3px;
+        background: transparent;
+        transition: background 0.15s ease;
+      }
+
+      &:hover::after,
+      &:focus-visible::after,
+      &.is-active::after {
+        background: var(--bul-yellow);
+      }
+
+      &.is-active {
+        color: var(--bul-black);
+        text-decoration: none;
+      }
+    }
+  }
+}

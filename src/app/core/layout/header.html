@@ -1,0 +1,49 @@
+<header class="header">
+  <div class="header__inner container">
+    <a routerLink="/" class="header__brand" aria-label="Retour à l'accueil de La BUL" (click)="close()">
+      <img
+        ngSrc="/Logo_BUL.png"
+        width="236"
+        height="310"
+        alt="La BUL"
+        priority
+      />
+      <span class="header__brand-text">La BUL</span>
+    </a>
+
+    <button
+      type="button"
+      class="header__toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-nav"
+      aria-label="Menu"
+      (click)="toggle()"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="28" height="28">
+        @if (menuOpen()) {
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" />
+        } @else {
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" />
+        }
+      </svg>
+    </button>
+
+    <nav
+      id="primary-nav"
+      class="header__nav"
+      [class.is-open]="menuOpen()"
+      aria-label="Navigation principale"
+    >
+      <a
+        routerLink="/asso"
+        routerLinkActive="is-active"
+        (click)="close()"
+      >L'asso</a>
+      <a
+        routerLink="/concept"
+        routerLinkActive="is-active"
+        (click)="close()"
+      >Le concept</a>
+    </nav>
+  </div>
+</header>

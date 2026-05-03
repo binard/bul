@@ -1,0 +1,77 @@
+.page {
+  padding: var(--space-lg) 0 var(--space-xl);
+}
+
+.page__head {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 4px solid var(--bul-yellow);
+}
+
+.page__lead {
+  font-size: 1.25rem;
+  color: var(--bul-gray-600);
+  font-style: italic;
+}
+
+.page__section {
+  margin-bottom: var(--space-lg);
+}
+
+.page__section--prose p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: var(--space-md);
+}
+
+.page__section--prose p strong {
+  font-weight: 600;
+  border-bottom: 3px solid var(--bul-yellow);
+}
+
+.pull-quote {
+  margin: var(--space-lg) 0 0;
+  padding: var(--space-md) var(--space-md) var(--space-md) var(--space-lg);
+  border-left: 4px solid var(--bul-yellow);
+  background: var(--bul-white);
+
+  p {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin: 0;
+    color: var(--bul-gray-900);
+    max-width: none;
+  }
+}
+
+.map {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.map h2 {
+  margin-bottom: var(--space-xs);
+}
+
+.map__caption {
+  color: var(--bul-gray-600);
+  margin: 0 auto var(--space-md);
+  font-style: italic;
+  max-width: var(--reading-width);
+}
+
+.map__figure {
+  margin: 0 auto;
+  max-width: 700px;
+  border: 2px solid var(--bul-black);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
